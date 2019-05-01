@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="text.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+</head>
+<body>
+	<div class="contents-wrap">
+		<div class="contents-box">
+			<h1>Miami</h1>
+			<h2 id="tDate"></h2>
+			<p id="tTime"></p>
+		</div>
+		<div class="contents-box">
+			<h1>Tokyo</h1>
+			<h2 id="jDate"></h2>
+			<p id="jTime"></p>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<p id="clock" class="myClock"></p>
+	<script>
+		function myTime(){
+			var today = new Date();
+
+	//Japan time zone
+	//getTimezoneOffset() will return 240 (240/60=4 GMT4)
+			var jp = today.getTime() + (780 * 60 *1000);
+			var jpt = new Date(jp);
+		
+			var month = today.getMonth() + 1;
+			var monthJ = jpt.getMonth() + 1;
+
+			var date = today.getDate();
+			var dateJ = jpt.getDate();
+
+			var year = today.getFullYear();
+			var yearJ = jpt.getFullYear();
+
+			var hour = today.getHours();
+			var hourJ = jpt.getHours();
+
+			var day = today.getDay();
+			var dayJ = jpt.getDay();
+
+			var min = today.getMinutes();
+			var minJ = jpt.getMinutes();
+
+			var sec = today.getSeconds();
+			var secJ = jpt.getSeconds();
+			var ampm = " ";
+			var ampmJ = " ";
+			var dayArray = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+			if(24 - hour <= 12){
+					ampm = "pm";
+				}else{
+					ampm = "am";
+				}
+
+			if(24 - hourJ <= 12){
+					ampmJ = "pm";
+				}else{
+					ampmJ = "am";
+				}
+
+			if(hour < 10){
+				hour = "0" + hour;
+			}	
+			if(min < 10){
+				min = "0" + min;
+			}	
+			if(sec < 10){
+				sec = "0" + sec;
+			}
+
+			if(hourJ < 10){
+				hourJ = "0" + hourJ;
+			}	
+			if(minJ < 10){
+				minJ = "0" + minJ;
+			}	
+			if(secJ < 10){
+				secJ = "0" + secJ;
+			}
+
+			var showTime = hour + ":" +  min +":" +  sec + ampm;
+			var showTimeJ = hourJ + ":" + minJ +":" + secJ + ampmJ;
+			
+			var todayDate = month + "/"+  date+ "/"+  + year + "," +  dayArray[day];
+			var todayDateJ = monthJ + "/" + dateJ +  "/"+  yearJ +   "," +   dayArray[dayJ];
+
+			document.getElementById('tDate').textContent = todayDate;
+			document.getElementById('jDate').textContent = todayDateJ;
+
+			document.getElementById('tTime').textContent = showTime;
+			document.getElementById('jTime').textContent = showTimeJ;
+
+		refresh();
+	}
+
+	 //setInterval(myTime,1000);
+	 function refresh(){
+	 	setTimeout(myTime,1000);
+	 }
+	 myTime();
+	</script>
+</body>
+</html>
