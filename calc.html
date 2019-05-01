@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="calc.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<div class="container">
+		<div class="heading">
+			<h1> Tip Calculator</h1>
+		</div>
+		<form action="#" id="form" name="form">
+			<div class="myAmount">
+				<p>Bill amount:</p>
+				<input type="text" name="bill" id="bill" min="1" step="0.01">
+			</div>
+
+			<div class="myPercent">
+				<p>Percentage:</p>
+				<select name="percentage" id="percentage" name="percentage">
+					<option value="0"> - choose an option</option>
+					<option value="0.2">20%</option>
+					<option value="0.15">15%</option>
+					<option value="0.1">10%</option>
+				</select>
+			</div>
+		</form>
+
+		<div class="twoButtons">
+			<input type="button" value="Calculate" id="calc" onclick="calcMyTip();">
+			<input type="button" value = "clear" id="clear" onclick="numClear();">
+		</div>
+
+		<div class="output">
+			<div class="tip">
+				<p>Tip:&nbsp;$&nbsp;<output id="tip">0.00</p>
+				
+			</div>
+			<div class="total">
+				<p>Total:&nbsp;$&nbsp;<output id="total">0.00</p>
+				
+			</div>
+		</div>
+	<script src="calc.js" type="text/javascript"></script>
+	
+</body>
+</html>
